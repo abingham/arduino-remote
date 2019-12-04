@@ -12,11 +12,12 @@ void setup()
 
 void loop()
 {
-    uint8_t buf[12];
+    uint8_t buf[13];
     uint8_t buflen = sizeof(buf);
     if (driver.recv(buf, &buflen)) // Non-blocking
     {
       int i;
+      buf[12] = 0;
       // Message with a good checksum received, dump it.
       Serial.print("Message: ");
       Serial.println((char*)buf);         
